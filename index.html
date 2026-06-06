@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para Você ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Manrope',sans-serif;
+    background:#070b14;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* FUNDO */
+
+.background{
+    position:fixed;
+    inset:0;
+    z-index:-10;
+    overflow:hidden;
+    background:
+    radial-gradient(circle at 20% 20%, rgba(255,110,170,.15), transparent 35%),
+    radial-gradient(circle at 80% 30%, rgba(120,180,255,.15), transparent 35%),
+    radial-gradient(circle at 50% 80%, rgba(255,255,255,.06), transparent 40%),
+    #070b14;
+}
+
+.blur{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(90px);
+    animation:float 15s infinite ease-in-out;
+}
+
+.blur:nth-child(1){
+    width:350px;
+    height:350px;
+    background:#ff6fa5;
+    top:-100px;
+    left:-100px;
+}
+
+.blur:nth-child(2){
+    width:400px;
+    height:400px;
+    background:#6fa8ff;
+    right:-150px;
+    top:20%;
+    animation-delay:-5s;
+}
+
+.blur:nth-child(3){
+    width:300px;
+    height:300px;
+    background:#ffffff;
+    opacity:.05;
+    bottom:-100px;
+    left:30%;
+    animation-delay:-10s;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0px) translateX(0px);
+    }
+    50%{
+        transform:translateY(-40px) translateX(30px);
+    }
+}
+
+/* CARTA */
+
+.intro{
+    position:fixed;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:rgba(0,0,0,.4);
+    backdrop-filter:blur(12px);
+    z-index:100;
+    transition:1s;
+}
+
+.envelope{
+    width:280px;
+    height:190px;
+    position:relative;
+    cursor:pointer;
+    transition:.4s;
+}
+
+.envelope:hover{
+    transform:translateY(-10px);
+}
+
+.back{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#ffffff;
+    border-radius:20px;
+}
+
+.front{
+    position:absolute;
+    width:100%;
+    height:100%;
+    clip-path:polygon(0 0,100% 0,50% 70%);
+    background:#f1f1f1;
+}
+
+.heart{
+    position:absolute;
+    left:50%;
+    top:52%;
+    transform:translate(-50%,-50%);
+    font-size:45px;
+    z-index:3;
+}
+
+.open{
+    text-align:center;
+    margin-top:25px;
+    font-size:17px;
+    color:white;
+    font-weight:500;
+    letter-spacing:1px;
+}
+
+/* CONTEÚDO */
+
+.container{
+    width:min(1000px,95%);
+    margin:auto;
+    padding:100px 20px;
+    display:none;
+}
+
+.card{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.1);
+    backdrop-filter:blur(18px);
+    border-radius:35px;
+    padding:55px;
+    box-shadow:
+    0 20px 80px rgba(0,0,0,.3),
+    inset 0 0 0 1px rgba(255,255,255,.05);
+}
+
+.title{
+    text-align:center;
+    font-size:42px;
+    margin-bottom:40px;
+    font-weight:700;
+}
+
+.text{
+    white-space:pre-line;
+    line-height:2.1;
+    font-size:19px;
+    color:rgba(255,255,255,.92);
+}
+
+.fadeIn{
+    animation:show 1.5s ease;
+}
+
+@keyframes show{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@media(max-width:768px){
+
+.title{
+    font-size:30px;
+}
+
+.card{
+    padding:30px;
+}
+
+.text{
+    font-size:16px;
+    line-height:1.9;
+}
+
+.envelope{
+    transform:scale(.85);
+}
+}
+
+</style>
+</head>
+<body>
+
+<div class="background">
+    <div class="blur"></div>
+    <div class="blur"></div>
+    <div class="blur"></div>
+</div>
+
+<div class="intro" id="intro">
+
+    <div onclick="abrir()">
+
+        <div class="envelope">
+
+            <div class="back"></div>
+            <div class="front"></div>
+
+            <div class="heart">
+                ❤️
+            </div>
+
+        </div>
+
+        <div class="open">
+            Clique para abrir
+        </div>
+
+    </div>
+
+</div>
+
+<div class="container fadeIn" id="conteudo">
+
+    <div class="card">
+
+        <div class="title">
+            ❤️ Para Você ❤️
+        </div>
+
+        <div class="text">
+Eu passei muito tempo tentando encontrar uma forma de escrever isso. Apagando frases, recomeçando textos e tentando achar palavras que fossem grandes o suficiente para falar sobre você. E a verdade é que eu cheguei à conclusão de que elas não existem. Não porque falte vocabulário, mas porque algumas pessoas significam mais do que qualquer conjunto de palavras consegue explicar. Você é uma dessas pessoas para mim.
+
+Antes de você entrar na minha vida, os dias simplesmente passavam. Eu acordava, fazia o que precisava fazer, seguia a rotina e deixava o tempo correr. Era como observar um rio de longe, vendo a água seguir seu caminho sem prestar muita atenção ao que existia ao redor. Eu estava vivendo, mas muitas vezes parecia que apenas atravessava os dias sem realmente sentir tudo o que eles tinham para oferecer.
+
+Então você apareceu.
+
+E, aos poucos, sem grandes anúncios, sem momentos cinematográficos, sem nada exagerado, você mudou tudo.
+
+Você transformou conversas comuns em partes importantes da minha memória. Transformou momentos simples em lembranças que eu guardo com um carinho enorme. Transformou dias que seriam apenas mais um dia em algo que eu queria viver e lembrar.
+
+E eu nem sei se você tem noção do quanto fez por mim.
+
+Obrigado por cada conversa que tivemos.
+
+Obrigado por cada vez que você me ouviu.
+
+Obrigado por cada vez que você percebeu que eu não estava bem mesmo quando eu tentava fingir que estava.
+
+Obrigado por cada vez que você ficou.
+
+Porque ficar parece simples quando escrito em uma frase, mas não é. Permanecer na vida de alguém exige paciência, compreensão e carinho. E você fez isso tantas vezes que eu nem conseguiria contar.
+
+Uma das coisas mais bonitas que você me deu foi a sensação de ser compreendido. Nem sempre eu consigo entender o que estou sentindo. Nem sempre eu consigo explicar o que se passa dentro da minha cabeça. Muitas vezes eu mesmo me perco entre pensamentos, dúvidas e sentimentos que não sei organizar.
+
+Mesmo assim, você tentou entender.
+
+Mesmo assim, você ouviu.
+
+Mesmo assim, você permaneceu ao meu lado.
+
+E isso vale mais do que qualquer presente que alguém poderia me dar.
+
+Eu queria que você pudesse enxergar a si mesmo através dos meus olhos por alguns minutos. Talvez assim você entendesse o quanto eu admiro você. Talvez assim você percebesse a quantidade de vezes que você melhora os meus dias sem sequer perceber. Talvez assim você entendesse que existem momentos em que uma simples mensagem sua foi suficiente para mudar completamente o rumo de um dia ruim.
+
+Você se tornou uma presença tão importante que é impossível imaginar minha rotina sem você nela.
+
+Quando algo bom acontece, eu quero contar para você.
+
+Quando algo ruim acontece, eu penso em você.
+
+Quando algo engraçado acontece, eu imagino sua reação.
+
+Quando penso no futuro, você aparece nos meus pensamentos de forma natural.
+
+Você se tornou parte da minha vida de um jeito que eu nunca planejei, mas que hoje eu não trocaria por nada.
+
+E talvez a maior verdade que eu possa te dizer seja esta: esses meses com você foram melhores do que muitos anos da minha vida antes de te conhecer.
+
+Não porque minha vida anterior tenha sido completamente ruim.
+
+Não porque você resolveu todos os meus problemas.
+
+Mas porque você trouxe algo que estava faltando.
+
+Você trouxe companhia.
+
+Você trouxe carinho.
+
+Você trouxe compreensão.
+
+Você trouxe felicidade para momentos que antes passariam despercebidos.
+
+Você trouxe luz para dias difíceis.
+
+Você trouxe paz para momentos de confusão.
+
+Você trouxe amor.
+
+E isso fez toda a diferença.
+
+Às vezes eu penso na nossa história como um rio. Não um rio tranquilo o tempo inteiro, porque a vida não funciona assim. Existem curvas, correntezas mais fortes, dias de chuva e momentos em que a água parece seguir por caminhos difíceis. Mas existe uma beleza enorme no fato de que o rio continua seguindo em frente.
+
+E é assim que eu me sinto quando penso em nós.
+
+Porque, independentemente dos dias bons ou ruins, de todas as dificuldades ou desafios que aparecem, uma das melhores partes da caminhada tem sido ter você ao meu lado.
+
+Você fez com que o caminho parecesse mais bonito.
+
+Você fez com que os dias parecessem mais leves.
+
+Você fez com que muitas coisas voltassem a fazer sentido.
+
+E eu sou imensamente grato por isso.
+
+Também preciso te pedir desculpas por todas as vezes em que eu não consegui demonstrar o tamanho do que sinto. Desculpa pelos momentos em que fiquei calado quando deveria ter falado. Desculpa pelas vezes em que não encontrei as palavras certas. Desculpa pelos meus erros, pelas minhas inseguranças e pelas minhas confusões.
+
+A verdade é que eu ainda estou aprendendo a lidar com muita coisa dentro de mim. Ainda estou aprendendo a transformar sentimentos em palavras. Ainda estou aprendendo a mostrar tudo aquilo que sinto da forma que você merece.
+
+Mas existe algo que nunca mudou e nunca vai mudar.
+
+Eu amo você.
+
+E amo você mais do que qualquer texto conseguiria explicar.
+
+Mais do que qualquer carta conseguiria transmitir.
+
+Mais do que qualquer gesto isolado conseguiria demonstrar.
+
+Porque o que eu sinto por você está presente nos detalhes. Está presente nas vezes em que penso em você durante o dia. Está presente nas lembranças que guardo. Está presente na forma como você se tornou uma das partes mais importantes da minha vida.
+
+Você não é apenas alguém que eu amo.
+
+Você é alguém que eu admiro.
+
+Alguém que eu respeito.
+
+Alguém que eu agradeço por ter conhecido.
+
+Alguém que mudou minha vida para melhor simplesmente sendo quem é.
+
+E se existe algo que eu nunca quero que você esqueça, é isto:
+
+Você foi uma das melhores coisas que já aconteceram comigo.
+
+Você trouxe felicidade para uma versão minha que já tinha se acostumado a enfrentar muita coisa sozinho.
+
+Você me mostrou que compartilhar a vida com alguém pode torná-la muito mais bonita.
+
+Você me deu motivos para sorrir em dias difíceis.
+
+Você me deu lembranças que vou guardar para sempre.
+
+Você me deu amor.
+
+E eu nunca vou conseguir agradecer o suficiente por isso.
+
+Então, do fundo do meu coração, obrigado.
+
+Obrigado por cada conversa.
+
+Obrigado por cada risada.
+
+Obrigado por cada abraço.
+
+Obrigado por cada momento.
+
+Obrigado por cada lembrança.
+
+Obrigado por cada demonstração de carinho.
+
+Obrigado por ter escolhido permanecer.
+
+Obrigado por ter entrado na minha vida e transformado tantos dias comuns em memórias especiais.
+
+Obrigado por ser a pessoa que eu procuro quando quero dividir uma felicidade.
+
+Obrigado por ser a pessoa que eu procuro quando preciso de conforto.
+
+Obrigado por ser você.
+
+Porque, sinceramente, eu não sei como explicar o tamanho da diferença que você fez na minha vida.
+
+Só sei que fez.
+
+E que, desde que você chegou, tudo ficou melhor.
+
+Muito melhor.
+
+E não importa quantos anos passem, quantas páginas eu escreva ou quantas vezes eu tente explicar isso, sempre vou sentir que as palavras ficaram pequenas diante daquilo que você significa para mim.
+
+Eu te amo.
+
+E sou grato por cada segundo que tive a sorte de viver ao seu lado.
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+function abrir(){
+
+    document.getElementById("intro").style.opacity = "0";
+
+    setTimeout(() => {
+        document.getElementById("intro").style.display = "none";
+    }, 1000);
+
+    document.getElementById("conteudo").style.display = "block";
+
+    document.getElementById("musica").play();
+}
+
+</script>
+
+</body>
+</html>
