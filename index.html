@@ -3,218 +3,261 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Para Você ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-body{
-    font-family:'Quicksand',sans-serif;
-    overflow-x:hidden;
-    background:#07131f;
-    color:white;
+html{
+    scroll-behavior:smooth;
 }
 
+body{
+    font-family:'Manrope',sans-serif;
+    background:#070b14;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* FUNDO */
 
 .background{
     position:fixed;
     inset:0;
+    z-index:-10;
     overflow:hidden;
-    z-index:-2;
+    background:
+    radial-gradient(circle at 20% 20%, rgba(255,110,170,.15), transparent 35%),
+    radial-gradient(circle at 80% 30%, rgba(120,180,255,.15), transparent 35%),
+    radial-gradient(circle at 50% 80%, rgba(255,255,255,.06), transparent 40%),
+    #070b14;
 }
 
-.sky{
+.blur{
     position:absolute;
-    inset:0;
-    background:
-    linear-gradient(
-        to bottom,
-        #08111d 0%,
-        #102338 35%,
-        #1a4666 100%
-    );
+    border-radius:50%;
+    filter:blur(90px);
+    animation:float 15s infinite ease-in-out;
 }
 
-.river{
-    position:absolute;
-    bottom:0;
-    width:100%;
-    height:60%;
+.blur:nth-child(1){
+    width:350px;
+    height:350px;
+    background:#ff6fa5;
+    top:-100px;
+    left:-100px;
 }
 
-.wave{
-    position:absolute;
-    width:200%;
-    height:100%;
-    left:-50%;
-    background-repeat:repeat-x;
-    opacity:.55;
+.blur:nth-child(2){
+    width:400px;
+    height:400px;
+    background:#6fa8ff;
+    right:-150px;
+    top:20%;
+    animation-delay:-5s;
 }
 
-.wave1{
-    animation:flow 18s linear infinite;
-    background:
-    radial-gradient(circle at 50% 0%, rgba(255,255,255,.18), transparent 55%);
+.blur:nth-child(3){
+    width:300px;
+    height:300px;
+    background:#ffffff;
+    opacity:.05;
+    bottom:-100px;
+    left:30%;
+    animation-delay:-10s;
 }
 
-.wave2{
-    animation:flowReverse 26s linear infinite;
-    opacity:.35;
-    background:
-    radial-gradient(circle at 50% 0%, rgba(255,255,255,.13), transparent 60%);
+@keyframes float{
+    0%,100%{
+        transform:translateY(0px) translateX(0px);
+    }
+    50%{
+        transform:translateY(-40px) translateX(30px);
+    }
 }
 
-.wave3{
-    animation:flow 35s linear infinite;
-    opacity:.25;
-    background:
-    radial-gradient(circle at 50% 0%, rgba(255,255,255,.10), transparent 70%);
-}
+/* CARTA */
 
-@keyframes flow{
-    from{transform:translateX(0);}
-    to{transform:translateX(-25%);}
-}
-
-@keyframes flowReverse{
-    from{transform:translateX(-25%);}
-    to{transform:translateX(0);}
-}
-
-.overlay{
+.intro{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.55);
-    backdrop-filter:blur(10px);
     display:flex;
-    align-items:center;
     justify-content:center;
-    z-index:999;
+    align-items:center;
+    background:rgba(0,0,0,.4);
+    backdrop-filter:blur(12px);
+    z-index:100;
+    transition:1s;
 }
 
-.letter{
-    width:220px;
-    height:160px;
-    background:white;
-    border-radius:14px;
-    cursor:pointer;
+.envelope{
+    width:280px;
+    height:190px;
     position:relative;
+    cursor:pointer;
     transition:.4s;
-    box-shadow:0 15px 50px rgba(0,0,0,.4);
 }
 
-.letter:hover{
-    transform:scale(1.05);
+.envelope:hover{
+    transform:translateY(-10px);
 }
 
-.letter::before{
-    content:'';
+.back{
     position:absolute;
-    top:0;
-    left:0;
     width:100%;
     height:100%;
-    clip-path:polygon(0 0,100% 0,50% 60%);
-    background:#f2f2f2;
+    background:#ffffff;
+    border-radius:20px;
+}
+
+.front{
+    position:absolute;
+    width:100%;
+    height:100%;
+    clip-path:polygon(0 0,100% 0,50% 70%);
+    background:#f1f1f1;
 }
 
 .heart{
     position:absolute;
-    top:50%;
     left:50%;
+    top:52%;
     transform:translate(-50%,-50%);
-    font-size:42px;
-    color:#ff5c8a;
-    z-index:2;
+    font-size:45px;
+    z-index:3;
 }
 
-.open-text{
-    position:absolute;
-    bottom:-40px;
-    width:100%;
+.open{
     text-align:center;
+    margin-top:25px;
+    font-size:17px;
     color:white;
-    font-size:18px;
+    font-weight:500;
+    letter-spacing:1px;
 }
 
+/* CONTEÚDO */
 
-.content{
+.container{
+    width:min(1000px,95%);
+    margin:auto;
+    padding:100px 20px;
     display:none;
-    justify-content:center;
-    padding:70px 20px;
 }
 
 .card{
-    width:min(1000px,95%);
-    background:rgba(255,255,255,.08);
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.1);
     backdrop-filter:blur(18px);
-    border:1px solid rgba(255,255,255,.15);
-    border-radius:30px;
-    padding:50px;
-    box-shadow:0 0 40px rgba(0,0,0,.3);
+    border-radius:35px;
+    padding:55px;
+    box-shadow:
+    0 20px 80px rgba(0,0,0,.3),
+    inset 0 0 0 1px rgba(255,255,255,.05);
 }
 
-.card h1{
+.title{
     text-align:center;
-    margin-bottom:30px;
     font-size:42px;
+    margin-bottom:40px;
     font-weight:700;
 }
 
-.card p{
-    line-height:2;
-    font-size:20px;
+.text{
     white-space:pre-line;
+    line-height:2.1;
+    font-size:19px;
+    color:rgba(255,255,255,.92);
+}
+
+.fadeIn{
+    animation:show 1.5s ease;
+}
+
+@keyframes show{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 @media(max-width:768px){
+
+.title{
+    font-size:30px;
+}
 
 .card{
     padding:30px;
 }
 
-.card h1{
-    font-size:30px;
+.text{
+    font-size:16px;
+    line-height:1.9;
 }
 
-.card p{
-    font-size:17px;
+.envelope{
+    transform:scale(.85);
 }
 }
+
 </style>
 </head>
 <body>
 
 <div class="background">
-    <div class="sky"></div>
-
-    <div class="river">
-        <div class="wave wave1"></div>
-        <div class="wave wave2"></div>
-        <div class="wave wave3"></div>
-    </div>
+    <div class="blur"></div>
+    <div class="blur"></div>
+    <div class="blur"></div>
 </div>
 
-<div class="overlay" id="overlay">
-    <div class="letter" onclick="abrirCarta()">
-        <div class="heart">❤️</div>
-        <div class="open-text">Clique para abrir</div>
+<div class="intro" id="intro">
+
+    <div onclick="abrir()">
+
+        <div class="envelope">
+
+            <div class="back"></div>
+            <div class="front"></div>
+
+            <div class="heart">
+                ❤️
+            </div>
+
+        </div>
+
+        <div class="open">
+            Clique para abrir
+        </div>
+
     </div>
+
 </div>
 
-<div class="content" id="content">
+<div class="container fadeIn" id="conteudo">
+
     <div class="card">
 
-        <h1>❤️ Para Você ❤️</h1>
+        <div class="title">
+            ❤️ Para Você ❤️
+        </div>
 
-        <p>
-Obrigado por ter ficado. Obrigado por cada conversa, cada risada, cada vez que você me ouviu, cada vez que me entendeu quando nem eu mesmo conseguia entender o que estava sentindo. Você entrou na minha vida em um momento em que eu já tinha aprendido a conviver com muita coisa sozinho, e mesmo assim conseguiu mudar completamente a forma como eu vejo os meus dias.
+        <div class="text">
+Obrigado por ter ficado.
+
+Obrigado por cada conversa, cada risada, cada vez que você me ouviu, cada vez que me entendeu quando nem eu mesmo conseguia entender o que estava sentindo. Você entrou na minha vida em um momento em que eu já tinha aprendido a conviver com muita coisa sozinho, e mesmo assim conseguiu mudar completamente a forma como eu vejo os meus dias.
 
 É estranho pensar nisso, mas é verdade: esses meses com você foram melhores do que muitos anos da minha vida antes de te conhecer.
 
@@ -238,9 +281,15 @@ Obrigado por ter me mostrado um tipo de amor que eu não achava que encontraria.
 
 E também preciso te pedir desculpas.
 
-Desculpa pelas vezes em que eu não consegui demonstrar tudo o que sinto. Desculpa pelas vezes em que minhas ações não conseguiram acompanhar o tamanho do meu amor por você. Desculpa pelos meus erros, pelas minhas confusões e pelos momentos em que eu nem entendia o que estava acontecendo dentro da minha própria cabeça.
+Desculpa pelas vezes em que eu não consegui demonstrar tudo o que sinto.
 
-A verdade é que eu ainda estou aprendendo a lidar com os meus sentimentos. Ainda estou aprendendo a colocar para fora coisas que ficam presas dentro de mim. Mas mesmo quando eu não consigo expressar direito, mesmo quando eu falho nas palavras ou nas atitudes, existe uma coisa que nunca muda:
+Desculpa pelas vezes em que minhas ações não conseguiram acompanhar o tamanho do meu amor por você.
+
+Desculpa pelos meus erros, pelas minhas confusões e pelos momentos em que eu nem entendia o que estava acontecendo dentro da minha própria cabeça.
+
+A verdade é que eu ainda estou aprendendo a lidar com os meus sentimentos. Ainda estou aprendendo a colocar para fora coisas que ficam presas dentro de mim.
+
+Mas mesmo quando eu não consigo expressar direito, mesmo quando eu falho nas palavras ou nas atitudes, existe uma coisa que nunca muda:
 
 Eu te amo.
 
@@ -274,29 +323,39 @@ E, acima de tudo, obrigado por ser você.
 
 Porque, de todas as coisas boas que aconteceram na minha vida, conhecer você foi, sem dúvida, uma das maiores.
 
-Eu te amo. E cada dia que passa eu encontro mais motivos para te amar do que no dia anterior. Não porque você precise fazer algo para merecer isso, mas porque quanto mais eu te conheço, mais eu percebo a sorte que tenho de ter você na minha vida.
+Eu te amo.
+
+E cada dia que passa eu encontro mais motivos para te amar do que no dia anterior. Não porque você precise fazer algo para merecer isso, mas porque quanto mais eu te conheço, mais eu percebo a sorte que tenho de ter você na minha vida.
 
 E se a nossa história for um rio, eu só quero continuar seguindo esse curso ao seu lado, descobrindo paisagens novas, enfrentando as curvas que aparecerem e guardando cada momento que a corrente nos entregar.
 
 Porque, desde que você chegou, o caminho ficou muito mais bonito.
-        </p>
+
+        </div>
 
     </div>
+
 </div>
 
 <audio id="musica" loop>
-    <source src="sua-musica.mp3" type="audio/mpeg">
+    <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-function abrirCarta(){
 
-    document.getElementById("overlay").style.display="none";
+function abrir(){
 
-    document.getElementById("content").style.display="flex";
+    document.getElementById("intro").style.opacity = "0";
+
+    setTimeout(() => {
+        document.getElementById("intro").style.display = "none";
+    }, 1000);
+
+    document.getElementById("conteudo").style.display = "block";
 
     document.getElementById("musica").play();
 }
+
 </script>
 
 </body>
